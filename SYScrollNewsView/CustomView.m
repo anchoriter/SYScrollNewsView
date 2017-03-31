@@ -31,8 +31,8 @@
     if (self) {
         
         self.backgroundColor = RGBA(0, 0, 0, 0.8);
-        self.layer.cornerRadius = 15;
-        self.layer.masksToBounds = YES;
+//        self.layer.cornerRadius = 15;
+//        self.layer.masksToBounds = YES;
         [self setupUI];
         
     }

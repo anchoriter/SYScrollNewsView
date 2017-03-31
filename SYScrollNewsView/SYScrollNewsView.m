@@ -161,8 +161,7 @@
  *  添加定时器
  */
 - (void)addTimer{
-    [self addScrollViewTimer];
-    [self addRefreshTimer];
+    [self performSelectorInBackground:@selector(multiThread) withObject:nil];
 }
 /**
  *  移除定时器
@@ -173,6 +172,15 @@
     
     [self.refreshTimer invalidate];
     self.refreshTimer = nil;
+}
+-(void)multiThread{
+    @autoreleasepool {
+        if (![NSThread isMainThread]) {
+            [self addScrollViewTimer];
+            [self addRefreshTimer];
+        }
+        [[NSRunLoop currentRunLoop] run];
+    }
 }
 /**
  *  dealloc
